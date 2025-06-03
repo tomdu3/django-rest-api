@@ -9,7 +9,7 @@ class Product(models.Model):
     name = models.CharField(max_length=150)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField()
-    stock = models.PositiveIntegerField)
+    stock = models.PositiveIntegerField()
     image = models.ImageField(upload_to='products/', blank=True, null=True)
     
     @property
@@ -55,5 +55,5 @@ class OrderItem(models.Model):
         return self.product.price * self.quantity
     
     def __str__(self):
-        return f"{self.product.name} in {self.order}"
+        return f"{self.quantity}x {self.product.name} in Order {self.order}"
 
