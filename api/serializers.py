@@ -29,15 +29,26 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class OrderItemSerializer(serializers.ModelSerializer):
     # takes the name from the product model
-    product_name = serializers.CharField(source='product.name')
+    product_name = serializers.CharField(
+        source='product.name'
+        )
+    product_price = serializers.DecimalField(
+        source='product.price',
+        max_digits=10,
+        decimal_places=2
+        )
+    # if wish to show all product model details, then remove product_name and
+    # product_price from fields
+    # product = ProductSerializer()
 
     class Meta:
         model = OrderItem
         fields = (
-            'order',
-            'product_name',
             'product',
+            'product_name',
+            'product_price',
             'quantity',
+            'item_subtotal'
         )
 
 
