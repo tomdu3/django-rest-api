@@ -17,3 +17,5 @@ uv run ./manage.py graph_models api > models.dot
 - [GraphViz generator](https://dreampuf.github.io/GraphvizOnline/)
 - [Django Command Extensions](https://django-extensions.readthedocs.io/en/latest/command_extensions.html)
 - [Django Graph Models](https://django-extensions.readthedocs.io/en/latest/graph_models.html)
+- [ Django REST API Tutorial: The Ultimate Guide](https://www.moesif.com/blog/technical/api-development/Django-REST-API-Tutorial/)
+- [Django REST Framework API Guide - Serializers](https://www.django-rest-framework.org/api-guide/serializers/)
