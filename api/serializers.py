@@ -28,12 +28,16 @@ class ProductSerializer(serializers.ModelSerializer):
         return value
 
 class OrderItemSerializer(serializers.ModelSerializer):
+    # takes the name from the product model
+    product_name = serializers.CharField(source='product.name')
+
     class Meta:
         model = OrderItem
         fields = (
             'order',
+            'product_name',
             'product',
-            'quantity'
+            'quantity',
         )
 
 
@@ -43,6 +47,13 @@ class OrderSerializer(serializers.ModelSerializer):
         many=True,
         read_only=True
         )
+    # takes method get_total_price (by default)
+    total_price = serializers.SerializerMethodField()
+    
+    def get_total_price(self, obj):
+       order_items = obj.items.all()
+       return sum(order_item.item_subtotal for order_item in order_items)
+    
     class Meta:
         model = Order
         fields = (
@@ -50,7 +61,8 @@ class OrderSerializer(serializers.ModelSerializer):
             'user',
             'status',
             'created_at',
-            'items'
+            'items',
+            'total_price'
             )
 
 
