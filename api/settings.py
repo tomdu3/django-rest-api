@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'api',
 ]
 
@@ -127,3 +128,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Ovverride User model
 AUTH_USER_MODEL = 'api.User'
+
+# # Add Graph Models 
+# GRAPH_MODELS = {
+#   'all_applications': True,
+#   'group_models': True,
+# }
