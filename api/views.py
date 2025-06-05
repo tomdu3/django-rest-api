@@ -32,7 +32,9 @@ def product_detail(request, pk):
 def order_list(request):
     # prefetch_related to avoid N+1 query problem
     # it optimizes the query by fetching related objects in a single query
-    orders = Order.objects.prefetch_related('items').all()
+    orders = Order.objects.prefetch_related(
+        'items', 'items__product'  # items__product is the related name in OrderItem
+        ).all()
     serializer = OrderSerializer(orders, many=True)
     return Response(serializer.data)
 
