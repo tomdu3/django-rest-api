@@ -30,7 +30,9 @@ def product_detail(request, pk):
 
 @api_view(['GET'])
 def order_list(request):
-    orders = Order.objects.all()
+    # prefetch_related to avoid N+1 query problem
+    # it optimizes the query by fetching related objects in a single query
+    orders = Order.objects.prefetch_related('items').all()
     serializer = OrderSerializer(orders, many=True)
     return Response(serializer.data)
 
