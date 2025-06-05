@@ -1,7 +1,8 @@
+from django.db.models import Max
 from api.serializers import (
     ProductSerializer,
     OrderSerializer,
-    OrderItemSerializer
+    ProductInfoSerializer
 )
 from api.models import (
     Product,
@@ -37,4 +38,17 @@ def order_list(request):
 def order_detail(request, order_id):
     order = get_object_or_404(Order, order_id=order_id)
     serializer = OrderSerializer(order)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def product_info(request):
+    products = Product.objects.all()
+    serializer = ProductInfoSerializer(
+        {
+        'products': products,
+        'count': products.count(),
+        'max_price': products.aggregate(
+            max_price=Max('price'))['max_price']
+        }
+    )
     return Response(serializer.data)
