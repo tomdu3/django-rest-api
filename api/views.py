@@ -15,7 +15,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.shortcuts import get_object_or_404
 from rest_framework import generics
-
+from rest_framework.permissions import IsAuthenticated
 
 class ProductListAPIView(generics.ListAPIView):
     # filter products that are in stock
@@ -43,6 +43,7 @@ class UserOrderListAPIView(generics.ListAPIView):
         'items', 'items__product'
         ).all()
     serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         qs = super().get_queryset()
