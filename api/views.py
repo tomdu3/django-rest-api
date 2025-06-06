@@ -14,29 +14,28 @@ from api.models import (
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.shortcuts import get_object_or_404
-
-@api_view(['GET'])
-def product_list(request):
-    products = Product.objects.all()
-    serializer = ProductSerializer(products, many=True)
-    return Response(serializer.data)
+from rest_framework import generics
 
 
-@api_view(['GET'])
-def product_detail(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    serializer = ProductSerializer(product)
-    return Response(serializer.data)
+class ProductListAPIView(generics.ListAPIView):
+    # filter products that are in stock
+    queryset = Product.objects.filter(stock__gt=0)
+    
+    # queryset = Product.objects.all()
+    serializer_class = ProductSerializer
 
-@api_view(['GET'])
-def order_list(request):
-    # prefetch_related to avoid N+1 query problem
-    # it optimizes the query by fetching related objects in a single query
-    orders = Order.objects.prefetch_related(
+
+class ProductDetailAPIView(generics.RetrieveAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+
+class OrderListAPIView(generics.ListAPIView):
+    queryset = Order.objects.prefetch_related(
         'items', 'items__product'  # items__product is the related name in OrderItem
         ).all()
-    serializer = OrderSerializer(orders, many=True)
-    return Response(serializer.data)
+    serializer_class = OrderSerializer
+
 
 @api_view(['GET'])
 def order_detail(request, order_id):
