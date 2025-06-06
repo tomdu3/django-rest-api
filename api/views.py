@@ -32,9 +32,21 @@ class ProductDetailAPIView(generics.RetrieveAPIView):
 
 class OrderListAPIView(generics.ListAPIView):
     queryset = Order.objects.prefetch_related(
-        'items', 'items__product'  # items__product is the related name in OrderItem
+        # items__product is the related name in OrderItem
+        'items', 'items__product'
         ).all()
     serializer_class = OrderSerializer
+
+
+class UserOrderListAPIView(generics.ListAPIView):
+    queryset = Order.objects.prefetch_related(
+        'items', 'items__product'
+        ).all()
+    serializer_class = OrderSerializer
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        return qs.filter(user=self.request.user)
 
 
 @api_view(['GET'])
