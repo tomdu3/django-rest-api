@@ -1,6 +1,7 @@
 from django.test import TestCase
 from api.models import User, Order
 from rest_framework.reverse import reverse
+from rest_framework import status
 
 class UserOrderListAPITestCase(TestCase):
     def setUp(self):
@@ -25,7 +26,11 @@ class UserOrderListAPITestCase(TestCase):
         self.client.force_login(user)
         response = self.client.get(reverse('user_order_list'))
         
-        assert response.status_code == 200
-        data = response.json()
-        print(data)
-        assert len(data) == 2
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        orders = response.json()
+        print(orders)
+        self.assertTrue(all(order['user'] == user.id for order in orders))
+    
+    def test_user_order_list_unauthenticated_user(self):
+        response = self.client.get(reverse('user_order_list'))
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
