@@ -27,3 +27,5 @@ Here's a screenshot of the Silk dashboard after optimizing the db queries of Ord
 - [ Django REST API Tutorial: The Ultimate Guide](https://www.moesif.com/blog/technical/api-development/Django-REST-API-Tutorial/)
 - [Django REST Framework API Guide - Serializers](https://www.django-rest-framework.org/api-guide/serializers/)
 - [Django Silk](https://github.com/jazzband/django-silk) - Silky middleware for Django to analyze and optimize performance.
+- [Classy Django REST Framework](https://www.cdrf.co/)
+    - Detailed descriptions, with full methods and attributes, for each of Django REST Framework's class-based views and serializers.
