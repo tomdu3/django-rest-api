@@ -18,9 +18,13 @@ from rest_framework.views import APIView
 
 class ProductListAPIView(generics.ListAPIView):
     # filter products that are in stock
-    queryset = Product.objects.filter(stock__gt=0)
+    # queryset = Product.objects.filter(stock__gt=0)
     
-    # queryset = Product.objects.all()
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+class ProductCreateAPIView(generics.CreateAPIView):
+    model = Product
     serializer_class = ProductSerializer
 
 
@@ -59,3 +63,4 @@ class ProductInfoAPIView(APIView):
                 max_price=Max('price'))['max_price']
             })
         return Response(serializer.data)
+
