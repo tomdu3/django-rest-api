@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "api",
     "rest_framework",
     "silk",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -145,5 +146,14 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
         "rest_framework.authentication.SessionAuthentication",  #noqa fallback for admin 
-    ]
+    ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Example API',
+    'DESCRIPTION': 'Example API for ecommerce application',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
 }

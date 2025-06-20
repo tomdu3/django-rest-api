@@ -16,6 +16,19 @@ Django Silk is a Django middleware that provides a performance analysis tool for
 Here's a screenshot of the Silk dashboard after optimizing the db queries of Orders:
 ![Django Silk](./docs/silk-db-queries-optimization.png)
 
+
+## Django Spectacular
+
+Django Spectacular is a library that automatically generates OpenAPI schema for your Django REST Framework API.
+
+### Take it for a spin
+
+Generate your schema with the CLI:
+
+```shell
+$ ./manage.py spectacular --color --file schema.yml
+$ docker run -p 8080:8080 -e SWAGGER_JSON=/schema.yml -v ${PWD}/schema.yml:/schema.yml swaggerapi/swagger-ui
+```
 ## Resources
 
 - [Django REST Framework](https://www.django-rest-framework.org/tutorial/quickstart/)
