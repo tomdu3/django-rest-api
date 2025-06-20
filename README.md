@@ -30,3 +30,4 @@ Here's a screenshot of the Silk dashboard after optimizing the db queries of Ord
 - [Classy Django REST Framework](https://www.cdrf.co/)
     - Detailed descriptions, with full methods and attributes, for each of Django REST Framework's class-based views and serializers.
 - [Django REST Framework - API Guide - Permissions and Access restrictions](https://www.django-rest-framework.org/api-guide/permissions/#overview-of-access-restriction-methods)
+- [Django REST Framework - Documentation](https://www.django-rest-framework.org/topics/documenting-your-api/)
