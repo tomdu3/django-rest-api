@@ -27,3 +27,12 @@ Content-Type: application/json
     "username": "tomdu3",
     "password": "admin"
 }
+
+###
+# POST /api/v1/token/refresh to refresh the token
+POST http://127.0.0.1:8000/api/v1/token/refresh/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1MDUxMzMwNSwiaWF0IjoxNzUwNDI2OTA1LCJqdGkiOiJlOWE2Yjg5ZjNhNmI0MjMzOTFlMTA4OTU4NTExYmQzNSIsInVzZXJfaWQiOjJ9.ejCTz9Nr95-2mqNU65eebM2m6gbs5IE8x_NRjtcXs-Q"
+}
