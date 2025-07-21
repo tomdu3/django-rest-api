@@ -31,6 +31,8 @@ $ docker run -p 8080:8080 -e SWAGGER_JSON=/schema.yml -v ${PWD}/schema.yml:/sche
 ```
 ## Resources
 
+### Documentation
+
 - [Django REST Framework](https://www.django-rest-framework.org/tutorial/quickstart/)
 - [BugBytes: Django REST Framework series](https://www.youtube.com/playlist?list=PL-2EBeDYMIbSXhV8FMC1hVD32Fi6e4l2u)
 - [Django Graph Models command - Generate ER Diagrams for your Database](https://youtu.be/qzrE7cfc_3Q)
@@ -44,3 +46,7 @@ $ docker run -p 8080:8080 -e SWAGGER_JSON=/schema.yml -v ${PWD}/schema.yml:/sche
     - Detailed descriptions, with full methods and attributes, for each of Django REST Framework's class-based views and serializers.
 - [Django REST Framework - API Guide - Permissions and Access restrictions](https://www.django-rest-framework.org/api-guide/permissions/#overview-of-access-restriction-methods)
 - [Django REST Framework - Documentation](https://www.django-rest-framework.org/topics/documenting-your-api/)
+
+### Videos
+
+- [BugBytes - Django Rest Framework Series](https://www.youtube.com/playlist?list=PL-2EBeDYMIbTLulc9FSoAXhbmXpLq2l5t)
